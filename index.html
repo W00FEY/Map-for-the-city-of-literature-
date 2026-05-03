@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Melbourne City of Literature — Events Map</title>
+<meta name="description" content="An unofficial map of literary events in Melbourne, aggregated from cityofliterature.com.au/whats-on.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <h1>Melbourne <span>City of Literature</span> — Events Map</h1>
+    <p class="tagline">Unofficial map of every event listed on
+      <a href="https://cityofliterature.com.au/whats-on/" target="_blank" rel="noopener">cityofliterature.com.au/whats-on</a>.</p>
+  </div>
+  <div class="meta">
+    <span id="event-count">…</span>
+    <span class="sep">·</span>
+    <span id="generated-at">loading</span>
+  </div>
+</header>
+
+<main class="layout">
+  <aside class="sidebar" aria-label="Event list">
+    <div class="filters">
+      <input type="search" id="search" placeholder="Search title, venue, organiser…" autocomplete="off">
+      <label class="checkbox">
+        <input type="checkbox" id="hide-unmapped" checked>
+        Only show events with a venue on the map
+      </label>
+    </div>
+    <ul id="event-list" class="event-list" aria-live="polite"></ul>
+  </aside>
+
+  <section class="map-wrap">
+    <div id="map" role="region" aria-label="Map of Melbourne literary events"></div>
+  </section>
+</main>
+
+<footer class="bottombar">
+  <span>Events &amp; venue data: <a href="https://cityofliterature.com.au/whats-on/" target="_blank" rel="noopener">City of Literature</a>.</span>
+  <span>Map tiles: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors</a>.</span>
+  <span>Geocoding: <a href="https://nominatim.org/" target="_blank" rel="noopener">Nominatim</a>.</span>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
