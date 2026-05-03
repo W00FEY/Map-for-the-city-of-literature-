@@ -1,0 +1,40 @@
+name: Scrape Events
+
+on:
+  schedule:
+    # Run daily at 06:00 UTC (4pm ACST / 5pm AEST)
+    - cron: "0 6 * * *"
+  workflow_dispatch:    # Allow manual runs from the Actions tab
+
+permissions:
+  contents: write       # Allow committing events.json back to the repo
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: |
+          pip install -r scraper/requirements.txt
+          playwright install chromium --with-deps
+
+      - name: Run scraper
+        run: python scraper/scraper.py
+
+      - name: Commit updated events.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add events.json scraper/.geocode_cache.json 2>/dev/null || true
+          git diff --cached --quiet && echo "No changes to commit" || \
+            git commit -m "chore: update events data [$(date -u +%Y-%m-%d)]"
+          git push

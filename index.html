@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adelaide City of Literature – Events Map</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Leaflet MarkerCluster -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="sidebar">
+    <div id="sidebar-header">
+      <div id="logo-area">
+        <div id="logo-text">
+          <span id="logo-city">City of</span>
+          <span id="logo-lit">Literature</span>
+        </div>
+        <span id="logo-sub">Adelaide · Events Map</span>
+      </div>
+
+      <div id="search-area">
+        <input id="search" type="search" placeholder="Search events…" autocomplete="off" />
+      </div>
+
+      <div id="filter-area">
+        <label for="filter-date">Show from:</label>
+        <input id="filter-date" type="date" />
+        <button id="btn-clear-date" title="Clear date filter">✕</button>
+      </div>
+
+      <div id="stats-bar">
+        <span id="stats-text">Loading events…</span>
+        <button id="btn-fit" title="Zoom to all visible events">⊕ Fit all</button>
+      </div>
+    </div>
+
+    <ul id="event-list"></ul>
+
+    <div id="sidebar-footer">
+      Data from <a href="https://cityofliterature.com.au/whats-on/" target="_blank" rel="noopener">cityofliterature.com.au</a>
+      · Map © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>
+    </div>
+  </div>
+
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+
+  <script src="app.js"></script>
+</body>
+</html>
